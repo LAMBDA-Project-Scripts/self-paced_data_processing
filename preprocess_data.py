@@ -83,7 +83,7 @@ def collect_item_reading_times(csv_files, outfile="all_reading_times.csv"):
 					answer = -1
 	with open(outfile, "w") as fp:
 		csv_fields = ['participant', 'item_number', 'condition', 'words', 
-					  'reading_time', 'answer', 'answering_time']
+					  'reading_time', 'reading_time_per_word', 'answer', 'answering_time']
 		writer = csv.DictWriter(fp, fieldnames=csv_fields)
 		writer.writeheader()
 		for record in collected_data:
@@ -92,6 +92,7 @@ def collect_item_reading_times(csv_files, outfile="all_reading_times.csv"):
 							 'condition': record.condition,
 							 'words': record.words,
 							 'reading_time': record.reading_time,
+							 'reading_time_per_word': record.reading_time/record.words,
 							 'answer': record.answer,
 							 'answering_time': record.answering_time})
 
